@@ -1,13 +1,10 @@
 <?php
 /***********************************************
-* File      :   ichanges.php
+* File      :   config.php
 * Project   :   Z-Push
-* Descr     :   Generic IChanges interface. This interface can
-*               not be implemented alone.
-*               IImportChanges and IExportChanges interfaces
-*               inherit from this interface
+* Descr     :   CalDAV backend configuration file
 *
-* Created   :   02.01.2012
+* Created   :   26.03.2014
 *
 * Copyright 2007 - 2013 Zarafa Deutschland GmbH
 *
@@ -44,43 +41,13 @@
 * Consult LICENSE file for details
 ************************************************/
 
-interface IChanges {
-    /**
-     * Constructor
-     *
-     * @throws StatusException
-     */
+// **********************
+//  BackendCalDAV settings
+// **********************
 
-    /**
-     * Initializes the state and flags
-     *
-     * @param string        $state
-     * @param int           $flags
-     *
-     * @access public
-     * @return boolean      status flag
-     * @throws StatusException
-     */
-    public function Config($state, $flags = 0);
-
-    /**
-     * Configures additional parameters used for content synchronization
-     *
-     * @param ContentParameters         $contentparameters
-     *
-     * @access public
-     * @return boolean
-     * @throws StatusException
-     */
-    public function ConfigContentParameters($contentparameters);
-
-    /**
-     * Reads and returns the current state
-     *
-     * @access public
-     * @return string
-     */
-    public function GetState();
-}
+define('CALDAV_SERVER', 'http://calendar.domain.com');
+define('CALDAV_PORT', '80');
+define('CALDAV_PATH', '/caldav.php/%u/');
+define('CALDAV_PERSONAL', 'home'); //Personal CalDAV folder
 
 ?>

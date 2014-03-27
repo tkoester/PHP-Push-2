@@ -270,7 +270,7 @@ class BackendCalDAV extends BackendDiff {
 	 * Change/Add a message with contents received from ActiveSync
 	 * @see BackendDiff::ChangeMessage()
 	 */
-	public function ChangeMessage($folderid, $id, $message)
+	public function ChangeMessage($folderid, $id, $message, $contentParameters)
 	{
 		ZLog::Write(LOGLEVEL_DEBUG, sprintf("BackendCalDAV->ChangeMessage('%s','%s')", $folderid,  $id));
 		 
@@ -305,7 +305,7 @@ class BackendCalDAV extends BackendDiff {
 	 * Change the read flag is not supported.
 	 * @see BackendDiff::SetReadFlag()
 	 */
-	public function SetReadFlag($folderid, $id, $flags)
+	public function SetReadFlag($folderid, $id, $flags, $contentParameters)
 	{
 		return false;
 	}
@@ -314,7 +314,7 @@ class BackendCalDAV extends BackendDiff {
 	 * Delete a message from the CalDAV server.
 	 * @see BackendDiff::DeleteMessage()
 	 */
-	public function DeleteMessage($folderid, $id)
+	public function DeleteMessage($folderid, $id, $contentParameters)
 	{
 		ZLog::Write(LOGLEVEL_DEBUG, sprintf("BackendCalDAV->DeleteMessage('%s','%s')", $folderid,  $id));
 		$url = $this->_caldav_path . substr($folderid, 1) . "/" . $id;
@@ -329,7 +329,7 @@ class BackendCalDAV extends BackendDiff {
 	 * Move a message is not supported by CalDAV.
 	 * @see BackendDiff::MoveMessage()
 	 */
-	public function MoveMessage($folderid, $id, $newfolderid)
+	public function MoveMessage($folderid, $id, $newfolderid, $contentParameters)
 	{
 		return false;
 	}
